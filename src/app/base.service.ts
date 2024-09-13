@@ -5,13 +5,23 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class BaseService {
-  url="https://jsonplaceholder.typicode.com/todos/"
-  constructor(private http: HttpClient) { 
-   
+  url="http://172.16.16.148:3000/todo/"
+  constructor(private http: HttpClient) {   
     
   }
 
   getTodo(){
     return this.http.get(this.url)
+  }
+
+  postTodo(todo:any){
+    return this.http.post(this.url,todo)
+  }
+
+  putTodo(todo:any){
+    return this.http.put(this.url+todo.id,todo)
+  }
+  deleteTodo(todo:any){
+    return this.http.delete(this.url+todo.id)
   }
 }

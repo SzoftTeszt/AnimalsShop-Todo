@@ -21,16 +21,23 @@ constructor(private base:BaseService, private config:ConfigService){
 
 ment(todo:any){
   todo.userId=Number(todo.userId)
+  this.base.putTodo(todo).subscribe()
   console.log(todo)
 }
 
 torol(todo:any){
+  this.base.deleteTodo(todo).subscribe()
   console.log(todo)
 }
 hozzaad(){
   if (Object.keys(this.newTodo).length !== 0){
     this.newTodo.userId=Number(this.newTodo.userId)
     console.log(this.newTodo)
+    this.base.postTodo(this.newTodo).subscribe(
+      ()=>this.base.getTodo().subscribe(
+        (adatok)=>this.todos=adatok
+      )      
+    )
     this.newTodo={}
   }
   else{
