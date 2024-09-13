@@ -1,2 +1,40 @@
-<p>data works!</p>
-{{todo|json}}
+<!-- <p>data works!</p>
+{{oszlopok|json}}
+
+{{todo|json}} -->
+<div class="row  fw-bold my-4">
+    <div *ngFor="let oszlop of oszlopok" class="col">
+        {{oszlop.text}}
+    </div>
+    <div class="col">
+        Műveletek
+    </div>
+</div>
+<!-- Fejléc kiiratásának vége -->
+
+<div *ngFor="let todo of todos" class="row my-1">
+   
+        <div *ngFor="let oszlop of oszlopok" class="col">
+            <ng-container [ngSwitch]="oszlop.type">
+                <div *ngSwitchCase="'plain'" class="mt-1">
+                    {{todo[oszlop.key]}}
+                </div>
+                <div *ngSwitchCase="'boolean'" class="form-check form-switch">
+                    <input
+                    [(ngModel)]="todo[oszlop.key]"
+                    class="form-check-input" 
+                    role="switch"
+                    type="checkbox"> 
+                  </div>
+               
+                  <input *ngSwitchDefault="" 
+                  [(ngModel)]="todo[oszlop.key]"
+                  type="oszlop.type" class="form-control">
+
+            </ng-container>
+        </div>
+        <div class="col">
+            Műveletek
+        </div>
+   
+</div>

@@ -5,10 +5,10 @@ import { Injectable } from '@angular/core';
 })
 export class ConfigService {
   private todoColumns=[
-    {key:"id", type:"plain"},
-    {key:"userId", type:"number"},
-    {key:"title", type:"text"},
-    {key:"completed", type:"boolean"},
+    {key:"id", text:"#", type:"plain"},
+    {key:"userId",text:"Felhasználó azon", type:"number"},
+    {key:"title",text:"Cimke", type:"text"},
+    {key:"completed",text:"Teljesítve", type:"boolean"},
   ]
   constructor() { }
 
