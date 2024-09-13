@@ -9,6 +9,7 @@ import { ConfigService } from '../config.service';
 })
 export class DataComponent {
  todos:any
+ newTodo:any={}
  oszlopok:any
 
 constructor(private base:BaseService, private config:ConfigService){
@@ -18,4 +19,23 @@ constructor(private base:BaseService, private config:ConfigService){
   this.oszlopok=config.getTodoColumns()
 }
 
+ment(todo:any){
+  todo.userId=Number(todo.userId)
+  console.log(todo)
+}
+
+torol(todo:any){
+  console.log(todo)
+}
+hozzaad(){
+  if (Object.keys(this.newTodo).length !== 0){
+    this.newTodo.userId=Number(this.newTodo.userId)
+    console.log(this.newTodo)
+    this.newTodo={}
+  }
+  else{
+    console.log("Hülye a user!")
+  }
+  // HU
+}
 }
